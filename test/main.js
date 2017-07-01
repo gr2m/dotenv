@@ -154,6 +154,13 @@ describe('dotenv', function () {
       done()
     })
 
+    it('does not remove new lines at the end', function (done) {
+      parsed.DONT_REMOVE_NEWLINES.should.eql('dontremovenewlines\n')
+      parsed.DONT_REMOVE_NEWLINES_2.should.eql('dontremovenewlines\n\n')
+      parsed.DONT_REMOVE_NEWLINES_3.should.eql('\ndontremovenewlines')
+      done()
+    })
+
     it('ignores commented lines', function (done) {
       parsed.should.not.have.property('COMMENTS')
       done()
